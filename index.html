@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>PhysiWizard</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Link Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+  </head>
+  <body>
+    <div class="principal">
+    <nav id="Nav1">
+      <ul>
+        <li>
+          <a href="#" class="logo">
+            <img src="assets/images/magnet.png" alt="">
+            <span class="nav-logo">PhysiWizard</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="a active">
+            <i class="fas fa-home active"></i>
+            <span class="nav-item active">Inicio</span>
+          </a>
+
+        </li>
+        <li>
+          <a href="pages/LeyCoulomb.html" class="a">
+            <i class="fa-solid fa-car-battery"></i>
+            <span class="nav-item">Ley De Coulomb</span>          
+          </a>
+        </li>
+        <li>
+          <a href="pages/CampoElectrico.html" class="a">
+            <i class="fa-solid fa-plug-circle-plus"></i>
+            <span class="nav-item">Campo Electrico</span>
+          </a>
+        </li>
+        <li>
+          <a href="pages/Cinematica.html" class="a">
+            <i class="fa-solid fa-bolt"></i>
+            <span class="nav-item">Cinemática</span>
+          </a>
+        </li>
+        <li>
+          <a href="pages/info.html" class="a">
+            <i class="fa-solid fa-circle-info"></i>
+            <span class="nav-item">Sobre Nosotros</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <section class="home" id="home">
+      <div class="home-text container">
+        <h2 class="ttl">Fisica Electromagnética</h2>
+        <p class="subtitle">El electromagnetismo es una rama de la física que se encarga de estudiar la interacción entre las partículas con campos eléctricos y magnéticos.
+        La mayor parte de las fuerzas del mundo conocido tienen que ver con el electromagnetismo; por ejemplo, la luz.</p><br>
+        <div class="imgp">
+          <img id="pim"src="assets/images/fe.png" alt="">
+        </div>
+        <p class="txt">Los fenómenos electromagnéticos tienen aplicaciones muy importantes en disciplinas como la ingeniería, la electrónica, la salud, la aeronáutica o la construcción civil, entre otros. Se presentan en la vida diaria, casi sin darnos cuenta, en las brújulas, los parlantes, los timbres, las tarjetas magnéticas, los discos rígidos.</p><br>
+        <p class="txt">Las principales aplicaciones del electromagnetismo se emplean en:</p>
+        <li class="txt">La electricidad</li>
+        <li class="txt">El electromagnetismo</li>
+        <li class="txt">Los rayos gama y rayos x</li>
+        <li class="txt">La conductividad eléctrica y superconductividad</li>
+        <li class="txt">La radiación infrarroja, visible y ultravioleta</li>
+        <li class="txt">La radiación infrarroja, visible y ultravioleta</li>
+        <li class="txt">Las radioondas y microondas</li>
+        </div>
+    </section>
+    </div>
+    <!-- Boton Con La Calculadora -->
+    <button id="myBtn" ><i class="fa-solid fa-calculator"></i></button>
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="calculator">
+      <div class="output">
+        <span id="result">0</span>
+      </div>
+      <div class="buttons">
+        <button class="button" onclick="clearResult()">C</button>
+        <button class="button" onclick="addToResult('%')">%</button>
+        <button class="button" onclick="addToResult('/')">÷</button>
+        <button class="button" onclick="addToResult('*')">×</button>
+        <button class="button" onclick="addToResult('7')">7</button>
+        <button class="button" onclick="addToResult('8')">8</button>
+        <button class="button" onclick="addToResult('9')">9</button>
+        <button class="button" onclick="addToResult('-')">-</button>
+        <button class="button" onclick="addToResult('4')">4</button>
+        <button class="button" onclick="addToResult('5')">5</button>
+        <button class="button" onclick="addToResult('6')">6</button>
+        <button class="button" onclick="addToResult('+')">+</button>
+        <button class="button" onclick="addToResult('1')">1</button>
+        <button class="button" onclick="addToResult('2')">2</button>
+        <button class="button" onclick="addToResult('3')">3</button>
+        <button class="button" onclick="calculateResult()">=</button>
+        <button class="button" onclick="addToResult('0')">0</button>
+        <button class="button" onclick="addToResult('.')">.</button>
+        <button class="button" onclick ="addToResult('')"></button>
+        <button class="button" onclick ="addToResult('')"></button>
+        <button class="button" onclick="addToResult(characterKe('8.99e9'))">Ke</button>
+        <button class="button" onclick="addToResult('^')">x10</button>
+        <button class="button" onclick="addToResult('3')">3</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
+
+<!--Créditos
+<a href="https://www.flaticon.es/iconos-gratis/friccion" title="fricción iconos">Fricción iconos creados por Freepik - Flaticon</a>
+<a href="https://www.flaticon.es/iconos-gratis/distancia" title="distancia iconos">Distancia iconos creados por ChilliColor - Flaticon</a>
+<a href="https://www.flaticon.es/iconos-gratis/mismo" title="mismo iconos">Mismo iconos creados por Handicon - Flaticon</a>
+
+dasdsadadsadsadas
+

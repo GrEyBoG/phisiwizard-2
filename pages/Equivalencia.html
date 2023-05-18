@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="../style.css">
+	<title>Equivalencias</title>
+</head>
+<body class="FE">
+	<h1>Equivalencia entre Unidades de Coulomb</h1>
+
+	<label for="valor">Ingrese el valor de la carga:</label>
+	<input type="number" id="valor" name="valor">
+	<label for="unidad">Unidad de medida:</label>
+        <select class="tpb" id="unidad" name="unidad">
+          <option value="C">Coulombs</option>
+          <option value="nC">nanoCoulombs</option>
+          <option value="uC">microCoulombs</option>
+        </select><br>
+	<label for="unidad2">Unidad de medida:</label>
+        <select class="tpb" id="unidad2" name="unidad2">
+          <option value="C">Coulombs</option>
+          <option value="nC">nanoCoulombs</option>
+          <option value="uC">microCoulombs</option>
+        </select><br>
+	<input class="tpb" id="resc" type="button" value="Calcular" onclick="equivalencia()">
+	<div id="result"></div>
+	<div id="result2"></div>
+	<script>
+		function equivalencia(){
+			var valor = parseFloat(document.getElementById("valor").value);
+			var unidad = document.getElementById("unidad").value;
+			var unidad2 = document.getElementById("unidad2").value;
+			if (unidad === "nC" && unidad2== "uC") {
+			valor *= 0.001
+			} else if (unidad === "uC" && unidad2=="nC") {
+			valor *= 1000;
+			}
+			if (unidad === "uC" && unidad2=="C") {
+			valor *=0.000001  ;
+			} else if (unidad === "C"&& unidad2=="uC") {
+			valor *= 1000000;
+			}
+			if (unidad === "nC" && unidad2=="C") {
+			valor *=0.000000001 ;
+			} else if (unidad === "C"&& unidad2=="nC") {
+			valor *= 1000000000;
+			}
+
+
+			document.getElementById("result").innerHTML = valor.toFixed(15) + " " + unidad2;
+			document.getElementById("result2").innerHTML = valor.toExponential(2) + " " + unidad2;
+			return valor.toFixed(2)
+  			}
+		
+	</script>
+</body>
+</html>

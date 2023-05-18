@@ -1,0 +1,456 @@
+/* Google Fonts - Fuente */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+  *{
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    scroll-behavior: smooth;
+    scroll-padding-top: 2rem;
+    box-sizing: border-box;
+  }
+
+  /* Variables de colores */
+  :root{
+    --container-color: #f8f9fa;
+    --second-color: #9381ff;
+    --active-bg-color: #d8d8ff;
+    --text-color: #172317;
+    --bg-color: #e9ecef; 
+  }
+
+  body{
+    background-color: var(--bg-color);
+  }
+
+  .home{
+    margin-left: 100px;
+  }
+
+  .ttl{
+    text-align: center;
+  }
+
+  #Nav1{
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    background: var(--container-color);
+    width: 90px;
+    overflow: hidden;
+    transition: width 0.2s linear;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    border-top-right-radius: 26px;
+    border-bottom-right-radius: 26px;
+  }
+  #Nav1-logo{
+    position: relative;
+  }
+
+  #Nav1-item{
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+    text-transform: uppercase;
+  }
+    #Nav1:hover {
+      width: 370px;
+      transition: width 0.5s ease;
+    }
+
+        #Nav1:hover .nav-item {
+          display: block;
+        }
+  
+    #Nav1 .nav-item:hover {
+      display: block;
+    }
+
+  .logo{
+    text-align: center;
+    display: flex;
+    transition: all 0.5s ease;
+    margin: 10px 0 0 10px;
+  }
+
+  .logo img{
+    width: 45px;
+    height: 45px;
+    margin-left: 8px;
+  }
+
+  .logo span{
+    font-weight: bold;
+    padding-left: 15px;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+
+  .nav-item{
+    position: relative;
+    top: 4px;
+    margin-left: 10px;
+    text-transform: uppercase;
+    display: none;
+    transition: display 0.5s ease;
+  }
+  
+  a{
+    position: relative;
+    color: var(--text-color);
+    font-size: 14px;
+    display: table;
+    width: 300px;
+    padding: 10px;
+  }
+
+  a:not(.active):hover .nav-item{
+    color: var(--bg-color);
+  }
+
+  a:not(.active):hover .fa-solid{
+    color: var(--bg-color);
+  }
+
+  a:not(.active):hover .fa-regular{
+    color: var(--bg-color);
+  }
+
+  a{
+    transition: 0.2s;
+  }
+
+  .fas{
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 14px;
+    font-size: 20px;
+    text-align: center;
+    color: var(--text-color);
+  }
+
+  .fa-solid{
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 14px;
+    font-size: 20px;
+    text-align: center;
+    color: var(--text-color);
+  }
+
+  .a{
+    display: flex;
+    align-items: center;
+    border-right: 50%;
+    width: 100%;    
+  }
+
+  .cards-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 2rem 0;
+  }
+
+  .a:hover{
+    background: var(--second-color);
+  }
+
+  a.active{
+    background: var(--active-bg-color);
+    color: var(--text-color);
+  }
+
+    a.active:hover {
+      background: var(--active-bg-color);
+      color: var(--text-color);
+    }
+
+  
+
+  .active{
+    color: var(--second-color);
+  }
+
+ 
+  
+  ::selection{
+    color: var(--bg-color);
+    background: var(--second-color);
+  }
+
+  section{
+    padding: 3rem 0 2rem;
+  }
+
+  .container{
+    max-width: 1068px;
+    margin: auto;
+    width: 100%;
+  }
+
+  #myBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 100%;
+    background-color: var(--second-color);
+    color: white;
+    font-size: 30px;
+    padding: 10px 2px;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+  }
+
+  #myBtn:hover {
+    transform: scale(1.1);
+  }
+  
+  .fa-calculator{
+    font-size: 50px;
+    top:2px;
+    color: var(--bg-color);
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    padding-top: 15px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+/* Estilos para la calculadora */
+.calculator {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.output {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 2em;
+  padding-right: 0.5em;
+  border-bottom: 1px solid #ccc;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.button {
+  font-size: 1.5em;
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.button:active {
+  background-color: #e6e6e6;
+}
+/*Tarjetas de la Ley de Coulomb*/
+
+.card.nav {
+  display: inline;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 16px;
+  transition: 0.2s;
+}
+
+.card img {
+  width: 80%;
+  height: auto;
+}
+
+.card:hover{
+  transform: scale(1.1);
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+}
+
+.card h2 {
+  margin-top: 10px;
+  font-size: 18px;
+  text-align: center;
+  color: #172317;
+}
+
+.card:hover{
+  background: var(--active-bg-color);
+}
+
+.Nav2{
+    display: inline;
+    margin-left: 120px;
+    font-weight: bold;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#q1, #q2, #d, #fuerza, #f, #Q1, #valor,#unidadv2,#unidadv1, #result, #result2, #resultadodistancia,#resultadocarga, .CL{
+  border-radius: 20px;
+  margin: 1%;
+  border-style: double;
+  border-color: #666;
+  text-align: center;
+}
+
+#resultado{
+  margin: 1%;
+}
+
+.section { /*Se ocultan las secciones que no se requieran*/
+  display: none;
+}
+
+h2{
+  font-size: 28px;
+  margin: 10px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.FE{
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.TFE{
+  
+  margin: 20px;
+}
+
+.equipo-desarrollo h3 {
+  margin-top: 0;
+}
+
+.equipo-desarrollo ul {
+  padding: 0;
+  margin: 0;
+}
+
+.equipo-desarrollo li {
+  margin-bottom: 5px;
+  list-style: circle;
+}
+
+#ce {
+  text-align: center;
+}
+
+#botones-que-hacer{
+  text-align: center;
+  margin: 10px;
+}
+
+#op1, #op2, .tpb{
+  padding: 8px;
+  background-color: #cccccc;
+  border-radius: 20px;
+}
+
+#op1:hover, #op2:hover, .tpb:hover{
+  background-color: #8E8E8E;
+}
+
+.section{
+  text-align: center;
+}
+
+#unidadv{
+  margin-bottom: 10px;
+  border-radius: 20px;
+  background-color: #cccccc;
+}
+
+#opcion, #opcine{
+  margin: 10px;
+}
+
+#unidad{
+  margin-top: 10px;
+}
+
+#pim{
+  width: 250px;
+  height: 250px;
+}
+
+.imgp{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.txt{
+  padding: 10px;
+}
+
+#resc{
+  margin-top: 20px;
+}
+
+input{
+  border-radius: 20px;
+}
+
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <title>Ley de Coulomb - Solucionador de Problemas</title>
+  </head>
+  <body>
+    <div  class="FE">
+    <h1 class="TFE">Fuerza Eléctrica entre dos cargas</h1>
+    <form> <!--Se muestran los campos necesarios para ingresar los datos para resolver el problema-->
+      <label for="q1">Valor de la carga 1 (en Coulombs):</label>
+      <input type="number" id="q1" name="q1">
+      <label for="unidadQ1">Unidad de medida:</label>
+        <select class="tpb" id="unidadQ1" name="unidadQ1">
+          <option value="C">Coulombs</option>
+          <option value="mC">nanoCoulombs</option>
+          <option value="uC">microCoulombs</option>
+        </select><br>
+      <label for="q2">Valor de la carga 2 (en Coulombs):</label>
+      <input type="number" id="q2" name="q2">
+      <label for="unidadQ2">Unidad de medida:</label>
+        <select class="tpb" id="unidadQ2" name="unidadQ2">
+          <option value="C">Coulombs</option>
+          <option value="mC">nanoCoulombs</option>
+          <option value="uC">microCoulombs</option>
+        </select><br>
+      <label for="d">Distancia entre las cargas (en metros):</label>
+      <input type="number" id="d" name="d"><br>
+      <input class="tpb" type="button" value="Calcular" onclick="calcularFuerza()">
+    </form>
+    <div id="resultado"></div>
+    <script>
+      function calcularFuerza() {
+        // Obtener los valores de las cargas y la distancia desde los campos del formulario
+        var q1 = parseFloat(document.getElementById("q1").value);
+        var unidadQ1 = document.getElementById("unidadQ1").value;
+        var q2 = parseFloat(document.getElementById("q2").value);
+        var unidadQ2 = document.getElementById("unidadQ2").value;
+        var d = parseFloat(document.getElementById("d").value);
+
+        // Convertir los valores de las cargas a Coulombs si es necesario
+        if (unidadQ1 === "mC") {
+          q1 *= 0.001;
+        } else if (unidadQ1 === "uC") {
+          q1 *= 0.000001;
+        }
+        if (unidadQ2 === "mC") {
+          q2 *= 0.001;
+        } else if (unidadQ2 === "uC") {
+          q2 *= 0.000001;
+        }
+        // Calcular la fuerza eléctrica utilizando la ley de Coulomb
+        var k = 9e9; // Constante de Coulomb
+        var f = k * q1 * q2 / Math.pow(d, 2); //Fórmula para calcular la fuerza eléctrica
+
+        // Mostrar el resultado en la página
+        document.getElementById("resultado").innerHTML = "La fuerza eléctrica entre las cargas es de " + f.toFixed(2) + " Newtons."; //Se redondea a 2 cifras decimales el resultado
+      }
+    </script>
+  </div>
+  </body>
+
+</html>

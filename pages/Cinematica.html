@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physiwizard: Cinemática</title>
+    <script src="../scripts.js"></script>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+  <div class="ttl">
+  <h2>Cinemática</h2>
+  <p id="opcine">Elige una de las siguientes opciones</p>
+  <button class="tpb" id="op1">Movimiento Circular Uniforme (MCU)</button>
+	<button class="tpb" id="op2">Movimiento Rectilineo Uniforme (MRU)</button>
+  <button class="tpb" id="op3">Ecuacion horaria de un MRU</button>
+  </div>
+  <!-- <button class="CL" id="op4">Ecuacion de una recta</button> -->
+	<section id="opcion1" class="section">
+        <h2>Ecuación del MCU</h2>
+          <form>
+            <label>Radio de la trayectoria (r):</label>
+            <input type="number" id="radio"><br><br>
+            <label>Tiempo transcurrido (t):</label>
+            <input type="number" id="tiempo"><br><br>
+            <button class="tpb" type="button" onclick="calcularMCU()">Calcular</button>
+          </form>
+          <p id="resultado"></p>
+    </section>
+    <section id="opcion2" class="section">
+        <h2>Movimiento Rectilíneo Uniforme (MRU)</h2>
+        <form>
+          <label>Distancia recorrida (en metros):</label>
+          <input type="number" id="distancia"><br><br>
+          <label>Tiempo transcurrido (en segundos):</label>
+          <input type="number" id="tiempo2"><br><br>
+          <button class="tpb" type="button" onclick="calcularVelocidad()">Calcular velocidad</button>
+        </form>
+        <p id="resultado2"></p>
+    </section>
+    <section id="opcion3" class="section">
+        <h2>Ecuación horaria de un MRU</h2>
+        <form>
+          <label>Posición inicial (en metros) (x0):</label>
+          <input type="number" id="x0"><br><br>
+          <label>Velocidad (en metros/segundos) (v):</label>
+          <input type="number" id="v"><br><br>
+          <label>Tiempo (en segundos)(t):</label>
+          <input type="number" id="t"><br><br>
+          <button class="tpb" type="button" onclick="calcularEcuacionHoraria()">Calcular ecuación</button>
+        </form>
+        <p id="resultado3"></p>
+    </section>
+    <!-- <section id="opcion4" class="section">
+      <h2>Ecuación de una recta</h2>
+        <form>
+          <label>Punto 1 - Coordenada x:</label>
+          <input type="number" id="x1"><br><br>
+          <label>Punto 1 - Coordenada y:</label>
+          <input type="number" id="y1"><br><br>
+          <label>Punto 2 - Coordenada x:</label>
+          <input type="number" id="x2"><br><br>
+          <label>Punto 2 - Coordenada y:</label>
+          <input type="number" id="y2"><br><br>
+          <button type="button" onclick="calcularEcuacion()">Calcular ecuación</button>
+        </form>
+        <p id="resultado4"></p>
+    </section> -->
+    <script>
+    var btnOpcion1 = document.getElementById("op1"); //Se obtienen los valores del campo op1 con el método getElementById
+	  var btnOpcion2 = document.getElementById("op2"); //Se obtienen los valores del campo op2 con el método getElementById
+    var btnOpcion3 = document.getElementById("op3"); //Se obtienen los valores del campo op1 con el método getElementById
+	  var btnOpcion4 = document.getElementById("op4"); //Se obtienen los valores del campo op2 con el método getElementById
+    var btnOpcion5 = document.getElementById("op5"); //Se obtienen los valores del campo op1 con el método getElementById
+    var btnOpcion6 = document.getElementById("op6"); //Se obtienen los valores del campo op2 con el método getElementById
+    var btnOpcion7 = document.getElementById("op7"); //Se obtienen los valores del campo op1 con el método getElementById
+
+	  var seccionOpcion1 = document.getElementById("opcion1");
+	  var seccionOpcion2 = document.getElementById("opcion2");
+    var seccionOpcion3 = document.getElementById("opcion3");
+    var seccionOpcion4 = document.getElementById("opcion4");
+    var seccionOpcion5 = document.getElementById("opcion5");
+    var seccionOpcion6 = document.getElementById("opcion6");
+    var seccionOpcion7 = document.getElementById("opcion7");
+    
+
+
+    op1.addEventListener("click", function() { //Se utiliza el método addEventListener para que cuando aparezca la sección 1 desaparezca la 2
+        seccionOpcion1.style.display = "block";
+        seccionOpcion2.style.display = "none";
+        seccionOpcion3.style.display = "none";
+        seccionOpcion4.style.display = "none";
+        seccionOpcion5.style.display = "none";
+        seccionOpcion6.style.display = "none";
+        seccionOpcion7.style.display = "none";
+    });
+
+    op2.addEventListener("click", function() { //Se utiliza el método addEventListener para que cuando aparezca la sección 2 desaparezca la 1
+        seccionOpcion1.style.display = "none";
+        seccionOpcion2.style.display = "block";
+        seccionOpcion3.style.display = "none";
+        seccionOpcion4.style.display = "none";
+        seccionOpcion5.style.display = "none";
+        seccionOpcion6.style.display = "none";
+        seccionOpcion7.style.display = "none";
+    });
+
+    op3.addEventListener("click", function() { //Se utiliza el método addEventListener para que cuando aparezca la sección 1 desaparezca la 2
+      seccionOpcion1.style.display = "none";
+      seccionOpcion2.style.display = "none";
+      seccionOpcion3.style.display = "block";
+      seccionOpcion4.style.display = "none";
+      seccionOpcion5.style.display = "none";
+      seccionOpcion6.style.display = "none";
+      seccionOpcion7.style.display = "none";
+    });
+
+    op4.addEventListener("click", function() { //Se utiliza el método addEventListener para que cuando aparezca la sección 2 desaparezca la 1
+      seccionOpcion1.style.display = "none";
+      seccionOpcion2.style.display = "none";
+      seccionOpcion3.style.display = "none";
+      seccionOpcion4.style.display = "block";
+      seccionOpcion5.style.display = "none";
+      seccionOpcion6.style.display = "none";
+      seccionOpcion7.style.display = "none";
+    });
+
+    op5.addEventListener("click", function() { //Se utiliza el método addEventListener para que cuando aparezca la sección 1 desaparezca la 2
+      seccionOpcion1.style.display = "none";
+      seccionOpcion2.style.display = "none";
+      seccionOpcion3.style.display = "none";
+      seccionOpcion4.style.display = "none";
+      seccionOpcion5.style.display = "block";
+      seccionOpcion6.style.display = "none";
+      seccionOpcion7.style.display = "none";
+    });
+
+    op6.addEventListener("click", function() { //Se utiliza el método addEventListener para que cuando aparezca la sección 2 desaparezca la 1
+      seccionOpcion1.style.display = "none";
+      seccionOpcion2.style.display = "none";
+      seccionOpcion3.style.display = "none";
+      seccionOpcion4.style.display = "none";
+      seccionOpcion5.style.display = "none";
+      seccionOpcion6.style.display = "block";
+      seccionOpcion7.style.display = "none";
+    });
+
+    op7.addEventListener("click", function() { //Se utiliza el método addEventListener para que cuando aparezca la sección 2 desaparezca la 1
+      seccionOpcion1.style.display = "none";
+      seccionOpcion2.style.display = "none";
+      seccionOpcion3.style.display = "none";
+      seccionOpcion4.style.display = "none";
+      seccionOpcion5.style.display = "none";
+      seccionOpcion6.style.display = "none";
+      seccionOpcion7.style.display = "block";
+    });
+    </script>
+</body>
+</html>
