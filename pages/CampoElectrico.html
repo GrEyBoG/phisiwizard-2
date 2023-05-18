@@ -5,8 +5,49 @@
         <title>Physiwizard: Campo Eléctrico</title>
         <script src="../scripts.js"></script>
         <link rel="stylesheet" type="text/css" href="../style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
       </head>
   <body id="ce">
+    <nav id="Nav1">
+      <ul>
+        <li>
+          <a href="#" class="logo">
+            <img src="../assets/images/magnet.png" alt="" />
+            <span class="nav-logo">PhysiWizard</span>
+          </a>
+        </li>
+        <li>
+          <a href="../index.html" class="a">
+            <i class="fas fa-home"></i>
+            <span class="nav-item">Inicio</span>
+          </a>
+        </li>
+        <li>
+          <a href="LeyCoulomb.html" class="a">
+            <i class="fa-solid fa-car-battery"></i>
+            <span class="nav-item">Ley De Coulomb</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="a active">
+            <i class="fa-solid fa-plug-circle-plus active"></i>
+            <span class="nav-item active">Campo Electrico</span>
+          </a>
+        </li>
+        <li>
+          <a href="Cinematica.html" class="a">
+            <i class="fa-solid fa-bolt"></i>
+            <span class="nav-item">Cinemática</span>
+          </a>
+        </li>
+        <li>
+          <a href="info.html" class="a">
+            <i class="fa-solid fa-circle-info"></i>
+            <span class="nav-item">Sobre Nosotros</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
     <h2>Campo Eléctrico</h1>
     <p id="opcion">Elige una de las siguientes opciones</p>
     <button class="tpb" id="op1">Campo Eléctrico</button>
@@ -26,7 +67,10 @@
       <label for="distancia">Distancia:</label>
       <input type="number" id="distancia" name="distancia"> metros<br><br>
       <button class="tpb" onclick="calcularCampo()">Calcular campo eléctrico</button><br><br>
+      <button class="tpb" onclick="mostrarProcedimientoCampo()">Mostrar procedimiento</button><br><br>
+
       <div id="resultado"></div>
+      <div id="procedimiento"></div>
     </section>
     <section id="opcion2" class="section">
       <h2>Calcula la carga eléctrica</h2>
@@ -35,7 +79,9 @@
       <label for="distancia2">Distancia:</label>
       <input type="number" id="distancia2" name="distancia2"> metros<br><br>
       <button class="tpb" onclick="calcularCarga()">Calcular carga eléctrica</button><br><br>
+      <button class="tpb" onclick="mostrarProcedimientoCarga()">Calcular carga eléctrica</button><br><br>
       <div id="resultado2"></div>
+      <div id="procedimiento2"></div>
     </section>
     <section id="opcion3" class="section">
       <h2>Calcula la distancia</h2>
@@ -50,7 +96,9 @@
       <label for="campo2">Campo eléctrico:</label>
       <input type="number" id="campo2" name="campo2"> N/C<br><br>
       <button  class="tpb" onclick="calcularDistancia()">Calcular distancia</button><br><br>
+      <button class="tpb" onclick="mostrarProcedimientoDistancia()">Mostrar procedimiento</button><br><br>
       <div id="resultado3"></div>
+      <div id="procedimiento3"></div>
     </section>
         
     <section id="opcion3" class="section">
@@ -107,6 +155,31 @@
         document.getElementById("resultado").innerHTML = `El campo eléctrico es: ${campo.toFixed(2)} N/C.`;
       }
 
+      function mostrarProcedimientoCampo() {
+        // Obtenemos los valores ingresados por el usuario
+        var carga = parseFloat(document.getElementById("carga").value);
+        var unidad = document.getElementById("unidad").value;
+        var distancia = parseFloat(document.getElementById("distancia").value);
+
+        // Convertimos la carga eléctrica a Coulombs si es necesario
+        if (unidad === "nC") {
+          carga *= 0.000000001;
+          document.getElementById("procedimiento").innerHTML = "Convertimos la carga eléctrica a Coulombs multiplicando por 0.000000001";
+        } else if (unidad === "uC") {
+          carga *= 0.000001;
+          document.getElementById("procedimiento").innerHTML = "Convertimos la carga eléctrica a Coulombs multiplicando por 0.000001";
+        } else {
+          document.getElementById("procedimiento").innerHTML = "La carga ya está en Coulombs";
+        }
+        const k = 8.99 * Math.pow(10, 9);
+        // Calculamos el campo eléctrico
+        const campo = k * carga / Math.pow(distancia, 2);
+        // Mostramos el procedimiento y el resultado al usuario
+        document.getElementById("procedimiento").innerHTML += "<br>Calculamos el campo eléctrico con la fórmula: E = k * Q / r^2"+
+        `<br>E = (${k.toExponential(2)} * ${carga.toExponential(2)}) / (${distancia}^2)`+`El campo eléctrico es: ${campo.toFixed(2)} N/C.`;
+      }
+
+
       function calcularCarga() {
         var campo = parseFloat(document.getElementById("campo").value);
         var distancia = parseFloat(document.getElementById("distancia2").value);
@@ -116,6 +189,21 @@
         var resultado = carga.toFixed(4);
 
         document.getElementById("resultado2").innerHTML = "La carga eléctrica es " + resultado + " C";
+      }
+
+      function mostrarProcedimientoCarga() {
+        // Obtenemos los valores ingresados por el usuario
+        var campo = parseFloat(document.getElementById("campo").value);
+        var distancia = parseFloat(document.getElementById("distancia2").value);
+        var constante = 9e9; // Constante de Coulomb
+
+        // Calculamos la carga eléctrica
+        var carga = campo * (distancia * distancia) / constante;
+
+        // Mostramos el procedimiento y el resultado al usuario
+        document.getElementById("procedimiento2").innerHTML = "Calculamos la carga eléctrica con la fórmula: Q = E * r^2 / k"+
+        `<br>Q = (${campo} * ${distancia}^2) / (${constante.toExponential(2)})`+
+        `<br>La carga eléctrica es: ${carga.toFixed(4)} C.`;
       }
 
       function calcularDistancia() {
@@ -135,6 +223,33 @@
 
         document.getElementById("resultado3").innerHTML = "La distancia es " + resultado + " m";
       }
+
+      function mostrarProcedimientoDistancia() {
+// Obtenemos los valores ingresados por el usuario
+        var carga = parseFloat(document.getElementById("carga2").value);
+        var unidad = document.getElementById("unidad2").value;
+        var campo = parseFloat(document.getElementById("campo2").value);
+        var constante = 9e9; // Constante de Coulomb
+        // Convertimos la carga eléctrica a Coulombs si es necesario
+        if (unidad === "nC") {
+          carga *= 0.000000001;
+          document.getElementById("procedimiento3").innerHTML = "Convertimos la carga eléctrica a Coulombs multiplicando por 0.000000001";
+        } else if (unidad === "uC") {
+          carga *= 0.000001;
+          document.getElementById("procedimiento3").innerHTML = "Convertimos la carga eléctrica a Coulombs multiplicando por 0.000001";
+        } else {
+          document.getElementById("procedimiento3").innerHTML = "La carga ya está en Coulombs";
+        }
+
+        // Calculamos la distancia
+        var distancia = Math.sqrt(carga * constante / campo);
+
+        // Mostramos el procedimiento y el resultado al usuario
+        document.getElementById("procedimiento3").innerHTML += "<br>Calculamos la distancia con la fórmula: r = sqrt(Q * k / E)"+
+        `<br>r = sqrt(${carga.toExponential(2)} * ${constante.toExponential(2)} / ${campo})`+
+        `<br>La distancia es: ${distancia.toFixed(2)} m.`;
+      }
+
 
     </script>
   </body>

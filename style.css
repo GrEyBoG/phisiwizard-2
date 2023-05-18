@@ -180,8 +180,6 @@
     color: var(--second-color);
   }
 
- 
-  
   ::selection{
     color: var(--bg-color);
     background: var(--second-color);
@@ -451,6 +449,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 input{
   border-radius: 20px;
+  text-align: center;
 }
 
 

@@ -3,9 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
   <title>Calculadora Ley de Coulomb</title>
 </head>
 <body>
+  <nav id="Nav1">
+    <ul>
+      <li>
+        <a href="#" class="logo">
+          <img src="../assets/images/magnet.png" alt="" />
+          <span class="nav-logo">PhysiWizard</span>
+        </a>
+      </li>
+      <li>
+        <a href="../index.html" class="a">
+          <i class="fas fa-home"></i>
+          <span class="nav-item">Inicio</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="a active">
+          <i class="fa-solid fa-car-battery active"></i>
+          <span class="nav-item active">Ley De Coulomb</span>
+        </a>
+      </li>
+      <li>
+        <a href="CampoElectrico.html" class="a">
+          <i class="fa-solid fa-plug-circle-plus"></i>
+          <span class="nav-item">Campo Electrico</span>
+        </a>
+      </li>
+      <li>
+        <a href="Cinematica.html" class="a">
+          <i class="fa-solid fa-bolt"></i>
+          <span class="nav-item">Cinemática</span>
+        </a>
+      </li>
+      <li>
+        <a href="info.html" class="a">
+          <i class="fa-solid fa-circle-info"></i>
+          <span class="nav-item">Sobre Nosotros</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
   <h1 class="ttl">¿Qué deseas hacer?</h1>
   <div id="botones-que-hacer">
 	<button id="op1">Hallar una carga desconocida</button>
@@ -26,8 +67,10 @@
       <label for="d">Distancia entre las cargas (en metros):</label><br>
       <input type="number" id="d" name="d"><br>
       <input type="button" class="tpb" value="Calcular Carga" onclick="calcularq2()">
+      <input type="button" class="tpb" value="Mostrar Procedimiento" onclick="mostrarProcedimientoCalcularq2()">
     </form>
     <div id="resultadocarga"></div>
+    <div id="procedimientocarga"></div>
 	</section>
 
 	<section id="opcion2" class="section">
@@ -51,8 +94,10 @@
         <option value="uC">microCoulombs</option>
       </select><br>
       <input class="tpb" type="button" value="Calcular distancia" onclick="calcularDistancia()"><!--Se llama la función que calcula la distancia-->
+      <input class="tpb" type="button" value="Mostrar Procedimiento" onclick="mostrarProcedimientoDistancia()">
     </form>
     <div id="resultadodistancia"></div>
+    <div id="procedimientoDistancia"></div>
 	</section>
 
 
@@ -93,6 +138,31 @@
       // Mostrar el resultado
       document.getElementById("resultadocarga").innerHTML = "El valor de la carga desconocida es: " + q2.toExponential(3) + " Coulombs.";
     }
+
+    function mostrarProcedimientoCalcularq2() {
+      // Se obtienen los valores de los campos
+      let f = parseFloat(document.getElementById("f").value);
+      let q1 = parseFloat(document.getElementById("Q1").value);
+      let d = parseFloat(document.getElementById("d").value);
+      let unidadv = document.getElementById("unidadv").value;
+
+      // Convertir los valores de las cargas a Coulombs si es necesario
+      if (unidadv === "nC") {
+        q1 *= 0.001;
+      } else if (unidadv === "uC") {
+        q1 *= 0.000001;
+      }
+
+      // Calcular el valor de la carga desconocida
+      let q2 = (f*d*d) / (9e9 * q1); //Formula para hallar la carga desconocida teniendo los demás valores
+
+      // Mostrar el procedimiento y el resultado
+      document.getElementById("procedimientocarga").innerHTML = `Calculamos el valor de la carga desconocida utilizando la ley de Coulomb: F = k * (q1 * q2) / d^2` +
+        `<br>Despejamos q2: q2 = (F * d^2) / (k * q1)` +
+        `<br>Sustituimos los valores: q2 = (${f} * ${d}^2) / (9e9 * ${q1})` +
+        `<br>El valor de la carga desconocida es: q2 = ${q2.toExponential(3)} Coulombs.`;
+    }
+
     function calcularDistancia(){
       let fuerza = parseFloat(document.getElementById('fuerza').value);
       let q1 = parseFloat(document.getElementById('q1').value);
@@ -118,6 +188,38 @@
 
       document.getElementById("resultadodistancia").innerHTML="La distancia entre las cargas es de "+ distancia.toExponential(3)+" metros."; //Se imprime la distancia y se redondea a 2 decimales
     }
+
+    function mostrarProcedimientoDistancia() {
+      let fuerza = parseFloat(document.getElementById('fuerza').value);
+      let q1 = parseFloat(document.getElementById('q1').value);
+      let q2 = parseFloat(document.getElementById('q2').value);
+      let unidadv1 = document.getElementById("unidadv1").value;
+      let unidadv2 = document.getElementById("unidadv2").value;
+
+      // Convertir los valores de las cargas a Coulombs si es necesario
+      if (unidadv1 === "nC") {
+        q1 *= 0.000000001;
+      } else if (unidadv1 === "uC") {
+        q1 *= 0.000001;
+      }
+      if (unidadv2 === "nC") {
+        q2 *= 0.000000001;
+      } else if (unidadv2 === "uC") {
+        q2 *= 0.000001;
+      }
+
+      const k = 9e9; // Constante de Coulomb
+      // Se calcula la distancia teniendo los demás valores
+      let distancia = Math.sqrt((k * Math.abs(q1) * Math.abs(q2)) / Math.abs(fuerza)); //Fórmula para la distancia con los valores absolutos pedidos
+
+      // Mostramos el procedimiento y el resultado al usuario
+      document.getElementById("procedimientoDistancia").innerHTML = `Calculamos la distancia entre las cargas con la fórmula: d = sqrt((k * |q1| * |q2|) / |fuerza|)` +
+        `<br>d = sqrt((${k} * ${Math.abs(q1)} * ${Math.abs(q2)}) / ${Math.abs(fuerza)})` +
+        `<br>La distancia entre las cargas es de ${distancia.toExponential(3)} metros.`;
+    }
+
+
+
   </script>
 </body>
 </html>
